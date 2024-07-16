@@ -3,17 +3,17 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      sm: "320px",
-      md: "768px",
-      lg: "1216px",
+      sm: "20rem",
+      md: "48rem",
+      lg: "64rem",
     },
     colors: {
-      "chinese-black": "#151515",
-      eucalyptus: "#4EE1A0",
-      "raisin-black": "#242424",
-      "light-silver": "#D9D9D9",
-      white: "#FFFFFF",
-      mahogany: "#CC3300",
+      "chinese-black": "hsl(0, 0%, 8%)",
+      eucalyptus: "hsl(153, 71%, 59%)",
+      "raisin-black": "hsl(0, 0%, 14%)",
+      "light-silver": "hsl(0, 0%, 85%)",
+      white: "hsl(0, 0%, 100%)",
+      bittersweet: "hsl(7, 100%, 68%)",
     },
     extend: {
       fontSize: {
@@ -26,6 +26,12 @@ export default {
         fs48: "3rem",
         fs72: "4.5rem",
         fs88: "5.5rem",
+      },
+      fontFamily: {
+        display: "Space Grotesk, sans-serif",
+      },
+      transitionDuration: {
+        250: "250ms",
       },
     },
   },

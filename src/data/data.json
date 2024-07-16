@@ -1,0 +1,77 @@
+{
+  "skillsExperience": {
+    "HTML": 3,
+    "CSS": 3,
+    "JavaScript": 3,
+    "React": 2,
+    "Accessibility": 2,
+    "SASS": 2
+  },
+  "skills": ["HTML", "CSS", "JavaScript", "React", "Accessibility", "SASS"],
+  "projects": [
+    {
+      "id": 1,
+      "projectName": "ToDo Web App",
+      "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
+      "viewProject": "https://ressuman-todo-list-app.netlify.app/",
+      "viewCode": "https://github.com/ressuman/ToDo-App-Project.git",
+      "projectImage": "../public/images/"
+    },
+    {
+      "id": 2,
+      "projectName": "AudioPhile E-commerce App",
+      "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
+      "viewProject": "https://ressuman-audiophile-e-commerce-app.vercel.app",
+      "viewCode": "https://github.com/ressuman/Audiophile-E-Commerce-App-Project.git",
+      "projectImage": "../public/images/"
+    },
+    {
+      "id": 3,
+      "projectName": "Tapas App",
+      "skillsUsed": ["HTML", "CSS", "JavaScript"],
+      "viewProject": "https://ressuman-local-food-tapas-joint-app.pages.dev/",
+      "viewCode": "https://github.com/ressuman/Local-Food-Tapas-Joint-Project.git",
+      "projectImage": "../public/images/"
+    },
+    {
+      "id": 4,
+      "projectName": "Country Data Explore App",
+      "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
+      "viewProject": "https://ressuman-rest-countries-data-explorer.netlify.app/",
+      "viewCode": "https://github.com/ressuman/Rest-Countries-App-Project.git",
+      "projectImage": "../public/images/"
+    },
+    {
+      "id": 5,
+      "projectName": "Menu Food Items List",
+      "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
+      "viewProject": "https://ressuman-food-menu-items-list-app.vercel.app",
+      "viewCode": "https://github.com/ressuman/Food-Menu-Items-Project.git",
+      "projectImage": "../public/images/"
+    },
+    {
+      "id": 6,
+      "projectName": "Gallery App",
+      "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
+      "viewProject": "https://ressuman-infinite-scrolling-gallery.netlify.app/",
+      "viewCode": "https://github.com/ressuman/React-Infinite-Scrolling-Gallery-Project.git",
+      "projectImage": "../public/images/"
+    },
+    {
+      "id": 7,
+      "projectName": "GitHub User Search App",
+      "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
+      "viewProject": "https://ressuman-github-user-search-app.vercel.app/",
+      "viewCode": "https://github.com/ressuman/GitHub-User-Search-Project.git",
+      "projectImage": "../public/images/"
+    },
+    {
+      "id": 8,
+      "projectName": "Countdown Timer App",
+      "skillsUsed": ["HTML", "CSS", "JavaScript"],
+      "viewProject": "https://ressuman-countdown-timer-app.netlify.app/",
+      "viewCode": "https://github.com/ressuman/CountDown-Timer-App-Project.git",
+      "projectImage": "../public/images/"
+    }
+  ]
+}

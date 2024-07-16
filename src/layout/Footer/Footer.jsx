@@ -1,3 +1,9 @@
+import Contact from "../../components/Contact/Contact";
+
 export default function Footer() {
-  return <div></div>;
+  return (
+    <div>
+      <Contact />
+    </div>
+  );
 }
