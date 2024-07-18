@@ -13,7 +13,160 @@ export default function Projects() {
         </Button>
       </div>
 
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8  py-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-16">
+        {/* {data.projects.map((project, index) => (
+          <div
+            key={index}
+            className="max-w-sm relative rounded overflow-hidden shadow-lg transform duration-500 hover:scale-105 hover:shadow-2xl transition-shadow ease-in-out mx-auto md:mx-0"
+          >
+            <div className="relative">
+              <img
+                className="w-full h-80 object-cover object-center"
+                src={project.projectImage}
+                alt={`Image of ${project.projectName}`}
+              />
+              <div className="absolute inset-0 bg-chinese-black bg-opacity-75 opacity-0 hover:opacity-100 flex flex-col justify-center items-center transition-opacity duration-300 ease-in-out gap-10">
+                <a
+                  href={project.viewProject}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Project
+                </a>
+                <a
+                  href={project.viewCode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Code
+                </a>
+              </div>
+            </div>
+            <div className="px-6 py-4 text-white bg-chinese-black">
+              <h6 className="font-bold text-lg mb-2">{project.projectName}</h6>
+              <p className="text-sm">{project.skillsUsed.join(", ")}</p>
+            </div>
+          </div>
+        ))} */}
+
+        {data.projects.map((project, index) => (
+          <div
+            key={index}
+            className="max-w-sm relative rounded overflow-hidden shadow-lg transform duration-500 hover:scale-105 hover:shadow-2xl transition-shadow ease-in-out mx-auto md:mx-0"
+          >
+            <div className="relative">
+              <img
+                className="w-full h-80 object-cover object-center"
+                src={project.projectImage}
+                alt={`Image of ${project.projectName}`}
+              />
+              <div className="hidden lg:flex absolute inset-0 bg-chinese-black bg-opacity-75 opacity-0 hover:opacity-100 flex-col justify-center items-center transition-opacity duration-300 ease-in-out gap-10">
+                <a
+                  href={project.viewProject}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Project
+                </a>
+                <a
+                  href={project.viewCode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Code
+                </a>
+              </div>
+            </div>
+            <div className="px-6 py-4 text-white bg-chinese-black">
+              <h6 className="font-bold text-lg mb-2">{project.projectName}</h6>
+              <p className="text-sm">{project.skillsUsed.join(", ")}</p>
+              <div className="flex items-center justify-center gap-16 mt-4 lg:hidden">
+                <a
+                  href={project.viewProject}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Project
+                </a>
+                <a
+                  href={project.viewCode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* {data.projects.map((project, index) => (
+          <div
+            key={index}
+            className="max-w-sm relative rounded overflow-hidden shadow-lg transform duration-500 hover:scale-105 hover:shadow-2xl transition-shadow ease-in-out mx-auto md:mx-0"
+          >
+            <div className="relative">
+              <img
+                className="w-full h-80 object-cover object-center"
+                src={project.projectImage}
+                alt={`Image of ${project.projectName}`}
+              />
+              <div className="absolute inset-0 bg-chinese-black bg-opacity-75 opacity-0 lg:opacity-0 hover:opacity-100 flex flex-col justify-center items-center transition-opacity duration-300 ease-in-out gap-10">
+                <a
+                  href={project.viewProject}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Project
+                </a>
+                <a
+                  href={project.viewCode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Code
+                </a>
+              </div>
+            </div>
+            <div className="px-6 py-4 text-white bg-chinese-black">
+              <h6 className="font-bold text-lg mb-2">{project.projectName}</h6>
+              <p className="text-sm">{project.skillsUsed.join(", ")}</p>
+              <div className="flex flex-col md:flex-row md:gap-4 mt-4 lg:hidden">
+                <a
+                  href={project.viewProject}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Project
+                </a>
+                <a
+                  href={project.viewCode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
+                >
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        ))} */}
+      </div>
+    </div>
+  );
+}
+
+{
+  /* <div className="grid grid-cols-1 md:grid-cols-2 gap-8  py-16">
         <div className="max-w-sm rounded overflow-hidden shadow-lg bg-bittersweet transform duration-500 hover:scale-105 hover:shadow-2xl transition-shadow ease-in-out">
           <img className="w-full h-48 object-cover" src="" alt="Card image" />
           <div className="px-6 py-4">
@@ -43,43 +196,5 @@ export default function Projects() {
             </a>
           </p>
         </div>
-      </div> */}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-16">
-        <div className="max-w-sm relative rounded overflow-hidden shadow-lg bg-white transform duration-500 hover:scale-105 hover:shadow-2xl transition-shadow ease-in-out">
-          <img
-            className="w-full h-full object-cover object-center"
-            src="../../../public/images/audiophile-e-commerce.jpg"
-            alt="Card image"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 flex flex-col justify-center items-center transition-opacity duration-300 ease-in-out">
-            <p className="text-white mb-2">Show Code</p>
-            <a
-              href="https://github.com/your-repo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-eucalyptus underline"
-            >
-              GitHub Link
-            </a>
-            <p className="text-white mt-4">View Demo</p>
-            <a
-              href="https://your-demo-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-eucalyptus underline"
-            >
-              Demo Link
-            </a>
-          </div>
-          {/* <div className="px-6 py-4 text-raisin-black">
-            <h6 className="font-bold text-xl mb-2">Card Title</h6>
-            <p className="text-gray-700 text-base">
-              Card description goes here.
-            </p>
-          </div> */}
-        </div>
-      </div>
-    </div>
-  );
+      </div> */
 }
