@@ -1,6 +1,6 @@
 import Footer from "./layout/Footer/Footer";
 import { Main } from "./layout/Main/Main";
-import NavHeroHeader from "./layout/NavHeader/NavHeader";
+import NavHeroHeader from "./layout/NavHeroHeader/NavHeroHeader";
 
 export const App = () => {
   return (

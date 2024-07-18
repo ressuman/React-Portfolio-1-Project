@@ -17,6 +17,7 @@ const skillIcons = {
   Accessibility: FaUniversalAccess,
   SASS: FaSass,
 };
+
 export const Skills = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-28 border-y-2 md:border-y-0 md:border-t-2 py-16">

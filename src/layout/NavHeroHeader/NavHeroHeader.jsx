@@ -3,8 +3,28 @@ import DesktopImage from "../../assets/images/desktop/HeroDesktop1.png";
 import TabletImage from "../../assets/images/tablet/HeroTablet1.png";
 import MobileImage from "../../assets/images/mobile/HeroMobile1.png";
 import { Button } from "../../components/Button/Button";
+import { useEffect, useState } from "react";
+//import Typical from "react-typical";
 
 export default function NavHeroHeader() {
+  const [displayText, setDisplayText] = useState("");
+  const fullText = "Welcome! It’s a pleasure to meet you. I’m Richard Essuman.";
+
+  useEffect(() => {
+    let currentIndex = 0;
+
+    const intervalId = setInterval(() => {
+      if (currentIndex < fullText.length) {
+        setDisplayText(fullText.substring(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 200);
+
+    return () => clearInterval(intervalId);
+  }, [fullText]);
+
   return (
     <div className="grid grid-cols-1 items-center justify-between mx-auto md:mx-0 gap-0 bg-chinese-black md:bg-raisin-black w-full">
       <div className="grid grid-cols-1 md:grid-cols-5 items-center justify-between bg-raisin-black w-[60%] mx-auto md:w-full md:mx-0">
@@ -50,11 +70,17 @@ export default function NavHeroHeader() {
       <div className="grid grid-cols-1 md:grid-cols-5 items-center justify-between bg-chinese-black">
         <div className="order-2 md:order-1 md:col-span-3 flex flex-col gap-5">
           <h2 className="text-fs32 md:text-fs36 lg:text-fs40 text-center md:text-start">
-            Welcome! It&apos;s a pleasure to meet you. I&apos;m &nbsp;
-            <span className="underline decoration-eucalyptus hover:text-eucalyptus hover:decoration-white transition transform ease-in-out duration-250">
-              Richard Essuman
-            </span>
-            .
+            {displayText.includes("Richard Essuman") ? (
+              <>
+                {displayText.split("Richard Essuman")[0]}
+                <span className="underline decoration-eucalyptus hover:text-eucalyptus hover:decoration-white transition transform ease-in-out duration-250">
+                  Richard Essuman
+                </span>
+                {displayText.split("Richard Essuman")[1]}
+              </>
+            ) : (
+              displayText
+            )}
           </h2>
           <p className="text-center md:text-start text-sm md:text-base lg:text-lg">
             As a full stack developer, I specialize in building robust,
@@ -71,7 +97,7 @@ export default function NavHeroHeader() {
             </Button>
           </div>
         </div>
-        <div className="relative order-1 md:order-2  md:col-span-2 mb-10 md:mb-0">
+        <div className="relative order-1 md:order-2 md:col-span-2 mb-10 md:mb-0">
           <img
             src={DesktopImage}
             alt="Desktop view"
