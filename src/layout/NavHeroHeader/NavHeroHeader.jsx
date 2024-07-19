@@ -4,6 +4,7 @@ import TabletImage from "../../assets/images/tablet/HeroTablet1.png";
 import MobileImage from "../../assets/images/mobile/HeroMobile1.png";
 import { Button } from "../../components/Button/Button";
 import { useEffect, useState } from "react";
+import { Link } from "react-scroll";
 //import Typical from "react-typical";
 
 export default function NavHeroHeader() {
@@ -26,12 +27,22 @@ export default function NavHeroHeader() {
   }, [fullText]);
 
   return (
-    <div className="grid grid-cols-1 items-center justify-between mx-auto md:mx-0 gap-0 bg-chinese-black md:bg-raisin-black w-full">
+    <div
+      id="header"
+      className="grid grid-cols-1 items-center justify-between mx-auto md:mx-0 gap-0 bg-chinese-black md:bg-raisin-black w-full"
+    >
       <div className="grid grid-cols-1 md:grid-cols-5 items-center justify-between bg-raisin-black w-[60%] mx-auto md:w-full md:mx-0">
         <div className="text-white bg-[#181818] md:bg-chinese-black md:col-span-3">
-          <h1 className="font-bold text-center md:text-start text-fs24 md:text-fs32 transition transform ease-in-out duration-250 hover:text-eucalyptus hover:scale-105 hover:translate-y-1 py-4 ">
-            richardessuman
-          </h1>
+          <Link
+            to="top"
+            smooth={true}
+            duration={500}
+            className="cursor-pointer"
+          >
+            <h1 className="font-bold text-center md:text-start text-fs24 md:text-fs32 transition transform ease-in-out duration-250 hover:text-eucalyptus hover:scale-105 hover:translate-y-1 py-4 ">
+              richardessuman
+            </h1>
+          </Link>
         </div>
         <div className="flex justify-center md:justify-end mr-0 md:mr-6 gap-7 md:col-span-2 bg-[#181818] md:bg-raisin-black">
           <a
@@ -92,9 +103,11 @@ export default function NavHeroHeader() {
           </p>
 
           <div className="text-center md:text-start">
-            <Button className="mt-10 md:mt-12 lg:mt-14 text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1">
-              Contact Me
-            </Button>
+            <Link to="contact" smooth={true} duration={500}>
+              <Button className="mt-10 md:mt-12 lg:mt-14 text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1">
+                Contact Me
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="relative order-1 md:order-2 md:col-span-2 mb-10 md:mb-0">

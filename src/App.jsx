@@ -13,7 +13,7 @@ export const App = () => {
       </div>
 
       <div className="w-full bg-raisin-black text-white">
-        <div className="font-display w-[90%] md:w-[85%] lg:w-[75%] mx-auto ">
+        <div className="font-display w-[90%] md:w-[85%] lg:w-[80%] mx-auto ">
           <Footer />
         </div>
       </div>
