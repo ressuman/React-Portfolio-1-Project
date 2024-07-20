@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
 import DesktopImage from "../../assets/images/desktop/HeroDesktop1.png";
 import TabletImage from "../../assets/images/tablet/HeroTablet1.png";
 import MobileImage from "../../assets/images/mobile/HeroMobile1.png";
@@ -71,6 +72,16 @@ export default function NavHeroHeader() {
             className="transition ease-in-out duration-250 hover:scale-110 hover:text-eucalyptus"
           >
             <FaXTwitter
+              size={20}
+              className="cursor-pointer transition ease-in-out duration-250"
+            />
+          </a>
+          <a
+            href="mailto:ressuman001@gmail.com"
+            target="_blank"
+            className="transition ease-in-out duration-250 hover:scale-110 hover:text-eucalyptus"
+          >
+            <IoMail
               size={20}
               className="cursor-pointer transition ease-in-out duration-250"
             />

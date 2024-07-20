@@ -1,22 +1,34 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "../Button/Button";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
 import { Link } from "react-scroll";
+import { Toast } from "../Toast/Toast";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const form = useRef();
+
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    linkedIn: "",
+    user_name: "",
+    user_email: "",
+    user_linkedIn: "",
     message: "",
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionMessage, setSubmissionMessage] = useState("");
   const [focused, setFocused] = useState({
-    fullName: false,
-    email: false,
-    linkedIn: false,
+    user_name: false,
+    user_email: false,
+    user_linkedIn: false,
     message: false,
+  });
+  const [toast, setToast] = useState({
+    message: "",
+    type: "",
+    isVisible: false,
   });
 
   const handleChange = (e) => {
@@ -38,12 +50,12 @@ export default function Contact() {
 
   const validateField = (name, value) => {
     const newErrors = { ...errors };
-    if (!value && name !== "linkedIn") {
-      newErrors[name] = `${capitalize(name)} is required`;
+    if (!value && name !== "user_linkedIn") {
+      newErrors[name] = `${getLabel(name)} is required`;
     } else {
       delete newErrors[name];
-      if (name === "email" && value && !/\S+@\S+\.\S+/.test(value)) {
-        newErrors.email = "Email address is invalid";
+      if (name === "user_email" && value && !/\S+@\S+\.\S+/.test(value)) {
+        newErrors.user_email = "Email address is invalid";
       }
     }
     setErrors(newErrors);
@@ -51,11 +63,11 @@ export default function Contact() {
 
   const validate = () => {
     const errors = {};
-    if (!formData.fullName) errors.fullName = "Full Name is required";
-    if (!formData.email) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Email address is invalid";
+    if (!formData.user_name) errors.user_name = "Full Name is required";
+    if (!formData.user_email) {
+      errors.user_email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.user_email)) {
+      errors.user_email = "Email address is invalid";
     }
     if (!formData.message) errors.message = "Message is required";
     return errors;
@@ -66,34 +78,75 @@ export default function Contact() {
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setToast({
+        message: "Please fix the errors in the form",
+        type: "error",
+        isVisible: true,
+      });
     } else {
-      // Handle form submission
-      console.log("Form data submitted:", formData);
+      // Handle form submission with EmailJS
+      setIsSubmitting(true);
+      emailjs
+        .sendForm(
+          import.meta.env.VITE_REACT_EMAIL_JS_SERVICE_ID,
+          import.meta.env.VITE_REACT_EMAIL_JS_TEMPLATE_ID,
+          form.current,
+          {
+            publicKey: import.meta.env.VITE_REACT_EMAIL_JS_PUBLIC_KEY_USER_ID,
+          }
+        )
+        .then(
+          (result) => {
+            console.log("Email successfully sent!", result.text);
+            setSubmissionMessage("Message sent successfully!");
+            setToast({
+              message: "Message sent successfully!",
+              type: "success",
+              isVisible: true,
+            });
+          },
+          (error) => {
+            console.log("Failed to send email:", error.text);
+            setSubmissionMessage(
+              "Failed to send the message. Please try again later."
+            );
+            setToast({
+              message: "Error sending message. Please try again later.",
+              type: "error",
+              isVisible: true,
+            });
+          }
+        )
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+
       // Reset form
       setFormData({
-        fullName: "",
-        email: "",
-        linkedIn: "",
+        user_name: "",
+        user_email: "",
+        user_linkedIn: "",
         message: "",
       });
       setErrors({});
       setFocused({
-        fullName: false,
-        email: false,
-        linkedIn: false,
+        user_name: false,
+        user_email: false,
+        user_linkedIn: false,
         message: false,
       });
     }
+    //e.target.reset();
   };
 
-  const capitalize = (s) => {
-    return s === "linkedIn"
-      ? "LinkedIn"
-      : s
-          .replace(/([A-Z])/g, " $1")
-          .replace(/^./, (str) => str.toUpperCase())
-          .trim();
+  const fieldLabels = {
+    user_name: "Full Name",
+    user_email: "Email",
+    user_linkedIn: "LinkedIn",
+    message: "Message",
   };
+
+  const getLabel = (field) => fieldLabels[field] || field;
 
   const getInputClasses = (field) => {
     if (errors[field]) return "border-bittersweet";
@@ -101,8 +154,18 @@ export default function Contact() {
     return "border-white";
   };
 
+  const closeToast = () => {
+    setToast({ ...toast, isVisible: false });
+  };
+
   return (
     <div id="contact" className="pt-20 pb-10">
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={closeToast}
+      />
       <div className="grid grid-cols-1 lg:grid-cols-2 mx-auto lg:mx-0 justify-center items-center text-center lg:text-start lg:items-start gap-36">
         <div className="gap-10">
           <h5 className="text-fs36 md:text-fs40 lg:text-fs48 font-bold mb-8">
@@ -118,67 +181,74 @@ export default function Contact() {
         </div>
 
         <form
+          ref={form}
           className="w-full max-w-lg mb-14 mx-auto lg:mx-0"
           onSubmit={handleSubmit}
         >
-          {["fullName", "email", "linkedIn", "message"].map((field) => (
-            <div key={field} className="mb-4 relative">
-              <div className="relative">
-                {field !== "message" ? (
-                  <input
-                    className={`shadow appearance-none border-b-2 bg-raisin-black text-white w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline ${getInputClasses(
-                      field
-                    )}`}
-                    id={field}
-                    type={field === "email" ? "email" : "text"}
-                    name={field}
-                    placeholder={capitalize(field)}
-                    value={formData[field]}
-                    onChange={handleChange}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                  />
-                ) : (
-                  <textarea
-                    className={`shadow appearance-none border-b-2 bg-raisin-black text-white w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline ${getInputClasses(
-                      field
-                    )}`}
-                    id={field}
-                    name={field}
-                    placeholder={capitalize(field)}
-                    value={formData[field]}
-                    onChange={handleChange}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                    rows={4}
-                  />
+          {["user_name", "user_email", "user_linkedIn", "message"].map(
+            (field) => (
+              <div key={field} className="mb-4 relative">
+                <div className="relative">
+                  {field !== "message" ? (
+                    <input
+                      className={`shadow appearance-none border-b-2 bg-raisin-black text-white w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline ${getInputClasses(
+                        field
+                      )}`}
+                      id={field}
+                      type={field === "user_email" ? "email" : "text"}
+                      name={field}
+                      placeholder={getLabel(field)}
+                      value={formData[field]}
+                      onChange={handleChange}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
+                    />
+                  ) : (
+                    <textarea
+                      className={`shadow appearance-none border-b-2 bg-raisin-black text-white w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline ${getInputClasses(
+                        field
+                      )}`}
+                      id={field}
+                      name={field}
+                      placeholder={getLabel(field)}
+                      value={formData[field]}
+                      onChange={handleChange}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
+                      rows={4}
+                    />
+                  )}
+                  <label
+                    htmlFor={field}
+                    className={`absolute left-3 -top-2.5 text-xs text-eucalyptus transition-all duration-200 ${
+                      focused[field] || formData[field]
+                        ? "opacity-100"
+                        : "opacity-0"
+                    }`}
+                  >
+                    {field === "user_linkedIn" ? "LinkedIn" : getLabel(field)}
+                  </label>
+                </div>
+                {errors[field] && (
+                  <p className="text-bittersweet text-xs italic absolute right-0 top-full">
+                    {errors[field]}
+                  </p>
                 )}
-                <label
-                  htmlFor={field}
-                  className={`absolute left-3 -top-2.5 text-xs text-eucalyptus transition-all duration-200 ${
-                    focused[field] || formData[field]
-                      ? "opacity-100"
-                      : "opacity-0"
-                  }`}
-                >
-                  {field === "linkedIn" ? "LinkedIn" : capitalize(field)}
-                </label>
               </div>
-              {errors[field] && (
-                <p className="text-bittersweet text-xs italic absolute right-0 top-full">
-                  {errors[field]}
-                </p>
-              )}
-            </div>
-          ))}
+            )
+          )}
           <div className="flex items-center justify-end mt-10">
             <Button
               className="text-white uppercase border-b-2 border-eucalyptus py-2 hover:text-eucalyptus hover:border-white transition transform ease-in-out duration-250 hover:scale-105 hover:translate-y-1"
               type="submit"
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </div>
+          {submissionMessage && (
+            <p className="text-white mt-4">{submissionMessage}</p>
+          )}
         </form>
       </div>
 
@@ -224,6 +294,16 @@ export default function Contact() {
             className="transition ease-in-out duration-250 hover:scale-110 hover:text-eucalyptus"
           >
             <FaXTwitter
+              size={20}
+              className="cursor-pointer transition ease-in-out duration-250"
+            />
+          </a>
+          <a
+            href="mailto:ressuman001@gmail.com"
+            target="_blank"
+            className="transition ease-in-out duration-250 hover:scale-110 hover:text-eucalyptus"
+          >
+            <IoMail
               size={20}
               className="cursor-pointer transition ease-in-out duration-250"
             />
