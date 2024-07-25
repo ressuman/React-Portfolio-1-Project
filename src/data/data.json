@@ -15,7 +15,7 @@
       "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
       "viewProject": "https://ressuman-todo-list-app.netlify.app/",
       "viewCode": "https://github.com/ressuman/ToDo-App-Project.git",
-      "projectImage": "/public/images/todo-app.jpg"
+      "projectImage": "/images/todo-app.jpg"
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@
       "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
       "viewProject": "https://ressuman-audiophile-e-commerce-app.vercel.app",
       "viewCode": "https://github.com/ressuman/Audiophile-E-Commerce-App-Project.git",
-      "projectImage": "/public/images/audiophile-e-commerce.jpg"
+      "projectImage": "/images/audiophile-e-commerce.jpg"
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
       "skillsUsed": ["HTML", "CSS", "JavaScript"],
       "viewProject": "https://ressuman-local-food-tapas-joint-app.pages.dev/",
       "viewCode": "https://github.com/ressuman/Local-Food-Tapas-Joint-Project.git",
-      "projectImage": "/public/images/local-food-menu-joint-app.png"
+      "projectImage": "/images/local-food-menu-joint-app.png"
     },
     {
       "id": 4,
@@ -39,7 +39,7 @@
       "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
       "viewProject": "https://ressuman-rest-countries-data-explorer.netlify.app/",
       "viewCode": "https://github.com/ressuman/Rest-Countries-App-Project.git",
-      "projectImage": "/public/images/countries-explorer.jpg"
+      "projectImage": "/images/countries-explorer.jpg"
     },
     {
       "id": 5,
@@ -47,7 +47,7 @@
       "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
       "viewProject": "https://ressuman-food-menu-items-list-app.vercel.app",
       "viewCode": "https://github.com/ressuman/Food-Menu-Items-Project.git",
-      "projectImage": "/public/images/menu-food-items-list-app.png"
+      "projectImage": "/images/menu-food-items-list-app.png"
     },
     {
       "id": 6,
@@ -55,7 +55,7 @@
       "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
       "viewProject": "https://ressuman-infinite-scrolling-gallery.netlify.app/",
       "viewCode": "https://github.com/ressuman/React-Infinite-Scrolling-Gallery-Project.git",
-      "projectImage": "/public/images/infinite-scroll-gallery.png"
+      "projectImage": "/images/infinite-scroll-gallery.png"
     },
     {
       "id": 7,
@@ -63,7 +63,7 @@
       "skillsUsed": ["HTML", "CSS", "JavaScript", "React"],
       "viewProject": "https://ressuman-github-user-search-app.vercel.app/",
       "viewCode": "https://github.com/ressuman/GitHub-User-Search-Project.git",
-      "projectImage": "/public/images/github-user-search.png"
+      "projectImage": "/images/github-user-search.png"
     },
     {
       "id": 8,
@@ -71,7 +71,7 @@
       "skillsUsed": ["HTML", "CSS", "JavaScript"],
       "viewProject": "https://ressuman-countdown-timer-app.netlify.app/",
       "viewCode": "https://github.com/ressuman/CountDown-Timer-App-Project.git",
-      "projectImage": "/public/images/countdown-timer-app.png"
+      "projectImage": "/images/countdown-timer-app.png"
     }
   ]
 }
