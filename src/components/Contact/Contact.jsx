@@ -18,7 +18,7 @@ export default function Contact() {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submissionMessage, setSubmissionMessage] = useState("");
+  //const [submissionMessage, setSubmissionMessage] = useState("");
   const [focused, setFocused] = useState({
     user_name: false,
     user_email: false,
@@ -98,7 +98,7 @@ export default function Contact() {
         .then(
           (result) => {
             console.log("Email successfully sent!", result.text);
-            setSubmissionMessage("Message sent successfully!");
+            //setSubmissionMessage("Message sent successfully!");
             setToast({
               message: "Message sent successfully!",
               type: "success",
@@ -107,9 +107,9 @@ export default function Contact() {
           },
           (error) => {
             console.log("Failed to send email:", error.text);
-            setSubmissionMessage(
-              "Failed to send the message. Please try again later."
-            );
+            // setSubmissionMessage(
+            //   "Failed to send the message. Please try again later."
+            // );
             setToast({
               message: "Error sending message. Please try again later.",
               type: "error",
@@ -246,9 +246,9 @@ export default function Contact() {
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </div>
-          {submissionMessage && (
-            <p className="text-white mt-4">{submissionMessage}</p>
-          )}
+          {/* {submissionMessage && (
+            <p className="text-eucalyptus mt-4">{submissionMessage}</p>
+          )} */}
         </form>
       </div>
 

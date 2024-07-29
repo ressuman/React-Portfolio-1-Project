@@ -22,7 +22,7 @@ export default function NavHeroHeader() {
       } else {
         clearInterval(intervalId);
       }
-    }, 200);
+    }, 100);
 
     return () => clearInterval(intervalId);
   }, [fullText]);
